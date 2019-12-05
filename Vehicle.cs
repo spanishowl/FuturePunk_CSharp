@@ -6,30 +6,29 @@ using System.Threading.Tasks;
 
 namespace FuturePunk
 {
-    class Vehicle
+    abstract class Vehicle
     {
-        private readonly int fuel;
-        private readonly int speed;
-        private readonly int armor;
+        public abstract int Fuel { get; protected set; }
+        public abstract int Speed { get; protected set; }
+        public abstract int Armor { get; protected set; }
+        public abstract int Cargo { get; protected set; }
 
-        public Vehicle(int fuel, int speed, int armor, string name)
+        public Vehicle(int fuel, int speed, int armor, int cargo)
         {
-            this.fuel = fuel;
-            this.speed = speed;
-            this.armor = armor;
+            Fuel = fuel;
+            Speed = speed;
+            Armor = armor;
+            Cargo = cargo;
         }
-
-        public static Vehicle A1 = new Vehicle(3, 1, 0, "A1");
-        public static Vehicle A2 = new Vehicle(4, 2, 1, "A2");
 
         private void Movement(Vehicle vehicle)
         {
-            int efficiency = vehicle.speed / vehicle.fuel;
+            int efficiency = vehicle.Speed / vehicle.Fuel;
         }
 
         private void Defence(Vehicle vehicle, int attack)
         {
-            int defence = attack - vehicle.armor;
+            int defence = attack - vehicle.Armor;
         }
 
         
